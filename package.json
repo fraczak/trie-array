@@ -1,0 +1,28 @@
+{
+  "name": "trie",
+  "version": "1.0.0",
+  "description": "Keeps your data sorted in trie",
+  "main": "index.js",
+  "scripts": {
+    "install":"coffee -c index.coffee",
+    "test": "node trie_test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fraczak/trie.git"
+  },
+  "keywords": [
+    "trie",
+    "in",
+    "coffee",
+    "script"
+  ],
+  "author": "Wojciech Fraczak",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/fraczak/trie/issues"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.8.0"
+  }
+}
