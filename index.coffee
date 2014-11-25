@@ -77,7 +77,7 @@ addToTrie = (t, x, s) ->
         t = q
         s = s.slice p.length + 1  # continue
 
-delInTrie = (t,s) ->
+delInTrie = (t,x,s) ->
     # x has to be in trie !!!!
     if (s.length is t.prefix.length)
         old_length = t.leaves.length
@@ -90,7 +90,7 @@ delInTrie = (t,s) ->
         a = s.charAt 0
         theChild = t.dict[a]
         old_size = theChild.size
-        t_a = delInTrie theChild, s.slice 1
+        t_a = delInTrie theChild, x, s.slice 1
         t.size +=  t_a.size - old_size
         if (t_a.size is 0)
             delete t.dict[a]
@@ -124,7 +124,7 @@ class Trie
         @add = (x) -> addToTrie @trie, x, @toStrFn x
 
     del: (x) ->
-        @trie = delInTrie @trie, @toStrFn x
+        @trie = delInTrie @trie, x, @toStrFn x
         @
 
 ############### USER INTERFACE #################

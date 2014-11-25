@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install":"coffee -c index.coffee",
-    "test": "node trie_test.js"
+    "test": "node trie_test.js && coffee test.coffee"
   },
   "repository": {
     "type": "git",
