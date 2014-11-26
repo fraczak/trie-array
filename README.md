@@ -4,7 +4,7 @@ trie
 Simple and fast implementation of a `trie`, <https://en.wikipedia.org/wiki/Trie>.
 To install:
 
-    npm install "git+ssh://git@github.com:fraczak/trie.git"
+    npm install git://github.com/fraczak/trie.git
 
 To use in coffee script:
 
