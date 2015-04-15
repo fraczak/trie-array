@@ -1,6 +1,6 @@
 {
   "name": "trie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Keeps your data sorted in trie",
   "main": "index.js",
   "scripts": {
@@ -12,10 +12,7 @@
     "url": "git://github.com/fraczak/trie.git"
   },
   "keywords": [
-    "trie",
-    "in",
-    "coffee",
-    "script"
+    "trie"
   ],
   "author": "Wojciech Fraczak",
   "license": "GPL",
