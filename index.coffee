@@ -10,10 +10,8 @@ prefix = (w1, w2) ->
     w1.slice 0, i
 
 addLeave = (node, element) ->
-    if (node.leaves)
-        node.leaves.push element
-    else
-        node.leaves = [element]
+    node.leaves ?= []
+    node.leaves.push element
     node
 
 splitNode = (x,n) ->
@@ -145,10 +143,10 @@ class Trie
         trieGetKeys @trie
 
     toString: ->
-        size = this.trie.size
-        head = 6
-        tail = 6
-        if (size <= head + tail)
+        size = @trie.size
+        head = 3
+        tail = 3
+        if (size <= head + tail + 4)
             return "trie[#{@getAt 0, size}].size=#{size}"
         "trie[#{@getAt 0, head},...,#{@getAt size-tail, tail}].size=#{size}"
 
