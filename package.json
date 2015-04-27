@@ -1,11 +1,11 @@
 {
   "name": "trie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Keeps your data sorted in trie",
   "main": "index.js",
   "scripts": {
-    "install": "coffee -c index.coffee",
-    "test": "node trie_test.js && coffee test.coffee"
+    "test": "node trie_test.js && coffee test.coffee",
+    "prepublish": "coffee -c index.coffee"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/fraczak/trie/issues"
   },
-  "devDependencies": {},
   "dependencies": {
     "coffee-script": "^1.9.2"
   }
