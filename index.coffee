@@ -210,3 +210,26 @@ getAtInTrie = (t,start,n) ->
 module.exports = (indexFn) ->
     new Trie indexFn
 
+module.exports.numToStr = (size, prec, number) ->
+    do (prefix = "", str = "", n = "", rest = "") -> 
+        if number >= 0
+            prefix = ""
+        else
+            prefix = "-"
+            number = - number
+        str = ""+number
+        [n,rest] = str.split "."
+        rest ?= ""
+        n = n.toString()
+        while (n.length < size)
+            n = "0" + n
+        if n.length isnt size
+            throw new Error "Number #{number} not stringifiable into {\##{size}}.{\##{prec}}"
+        while (rest.length < prec)
+            rest = rest + "0"
+        if rest.length isnt prec
+            throw new Error "Number #{number} not stringifiable into {\##{size}}.{\##{prec}}"
+        if prefix is "-"
+            n = ("#{9-x}" for x in n).join ""
+            rest = ("#{9-x}" for x in rest).join ""
+        return prefix + n + "." + rest
