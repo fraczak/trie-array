@@ -232,4 +232,6 @@ module.exports.numToStr = (size, prec, number) ->
         if prefix is "-"
             n = ("#{9-x}" for x in n).join ""
             rest = ("#{9-x}" for x in rest).join ""
-        return prefix + n + "." + rest
+        if prec > 0
+            return prefix + n + "." + rest unless rest is ""
+        return prefix + n
