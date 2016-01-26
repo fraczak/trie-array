@@ -210,17 +210,17 @@ getAtInTrie = (t,start,n) ->
 module.exports = (indexFn) ->
     new Trie indexFn
 
-module.exports.numToStr = (size, prec, number) ->
+module.exports.numToStr = (size, prec, base = 10) -> (number) ->
     do (prefix = "", str = "", n = "", rest = "") -> 
         if number >= 0
             prefix = ""
         else
             prefix = "-"
             number = - number
-        str = ""+number
+        str = number.toString(base)
         [n,rest] = str.split "."
         rest ?= ""
-        n = n.toString()
+        #n = n.toString(base)
         while (n.length < size)
             n = "0" + n
         if n.length isnt size
@@ -230,8 +230,10 @@ module.exports.numToStr = (size, prec, number) ->
         if rest.length isnt prec
             throw new Error "Number #{number} not stringifiable into {\##{size}}.{\##{prec}}"
         if prefix is "-"
-            n = ("#{9-x}" for x in n).join ""
-            rest = ("#{9-x}" for x in rest).join ""
+            n = ((base-1-parseInt(x,base)).toString(base) for x in n).join ""
+            rest = ((base-1-parseInt(x,base)).toString(base) for x in rest).join ""
+
         if prec > 0
             return prefix + n + "." + rest unless rest is ""
+
         return prefix + n

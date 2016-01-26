@@ -21,6 +21,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "coffee-script": "^1.10.0"
+    "coffee-script": "^1.10.0",
+    "js-priority-queue": "^0.1.3"
   }
 }

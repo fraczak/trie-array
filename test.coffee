@@ -1,4 +1,6 @@
 trieFactory = require "./index.coffee"
+PriorityQueue = require "js-priority-queue"
+
 trie = trieFactory (obj) ->
     key = obj.word.toUpperCase()
 
@@ -20,24 +22,27 @@ console.log JSON.stringify trie.getNth 3
 console.log JSON.stringify trie.getAt 4, 2
 
 
-trie2  = trieFactory (obj) ->
-    key = trieFactory.numToStr 1, 20, obj
+trie2  = trieFactory trieFactory.numToStr 4, 20
 
-numbers = ( Math.random() - Math.random() for i in [1..10])
+numbers = ( 1000 * (Math.random() - Math.random()) for i in [1..1000000])
+
+#for x in numbers
+#    trie2.add x
+
+#console.log JSON.stringify trie2.getAt 0, 10
+
+pq = new PriorityQueue comparator: (a,b) ->
+     a - b
 
 for x in numbers
-    trie2.add x
-
-console.log JSON.stringify trie2.getAt 0, 10
-
-
+    pq.queue x
 
 numbers.sort (x,y) ->
     x - y
 
 for x, i in numbers
-    y  = trie2.getNth i
+    y  = pq.dequeue()
     if x is y
-        console.log "#{i}. Ok (#{x})"
+        #console.log "#{i}. Ok (#{x.toString()})"
     else
-        console.error "#{i}. FAILURE: #{x} isnt #{y}"
+        console.error "#{i}. FAILURE: #{x.toString()} isnt #{y.toString()}"
